@@ -1,0 +1,58 @@
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333333;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.daysContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.dayBubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.pending {
+  background-color: #e0e0e0;
+  color: #757575;
+}
+
+.done {
+  background-color: #003B73;
+  color: #ffffff;
+}
+
+.missed {
+  background-color: #fceceb;
+  color: #d9534f;
+  border: 1px solid #d9534f;
+  font-size: 1.1rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .dayBubble {
+    width: 28px;
+    height: 28px;
+    font-weight: 400;
+    font-size: 0.6rem;
+  }
+}

@@ -2,9 +2,9 @@ import React from "react";
 import { Outlet, Link } from "react-router-dom";
 import styles from "./Layout.module.css";
 
-const IconHome = () => <span>🏠</span>;
-const IconWhatsApp = () => <span>💬</span>;
-const IconMenu = () => <span>☰</span>;
+const IconHome = () => <span></span>;
+const IconWhatsApp = () => <span></span>;
+const IconMenu = () => <span></span>;
 
 export function Layout() {
   return (

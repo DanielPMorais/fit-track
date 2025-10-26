@@ -1,0 +1,45 @@
+.navButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: #003b73;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  min-height: 100px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.iconWrapper {
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .navButton {
+    padding: 0.6rem;
+    min-height: 50px;
+  }
+
+  .label {
+    font-size: 0.6rem;
+  }
+
+  .iconWrapper {
+    font-size: 1.4rem;
+  }
+}
