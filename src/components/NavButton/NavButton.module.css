@@ -4,8 +4,8 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background-color: #003b73;
-  color: #ffffff;
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
   text-decoration: none;
   border-radius: 8px;
   min-height: 100px;

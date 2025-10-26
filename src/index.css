@@ -1,0 +1,29 @@
+:root {
+  /* Paleta de Cores Primárias */
+  --primary-blue: #003B73;
+  --secondary-blue: #002a50;
+  --primary-white: #ffffff;
+
+  /* Paleta de Cores Neutras */
+  --neutral-dark: #333333;
+  /* Para textos principais */
+  --neutral-medium: #757575;
+  /* Para textos secundários, ícones inativos */
+  --neutral-light: #e0e0e0;
+  /* Para bordas, fundos de bolhas pendentes */
+  --neutral-background: #f0f2f5;
+  /* Cor de fundo do app */
+
+  /* Cores de Feedback */
+  --feedback-error-text: #d9534f;
+  --feedback-error-background: #fceceb;
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+}
+
+body {
+  background-color: var(--neutral-background);
+}

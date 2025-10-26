@@ -1,0 +1,66 @@
+.card {
+  background-color: var(--primary-white);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  /* Animação suave na borda */
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.card:has(:focus), .card:has(:hover) {
+  border-color: var(--primary-blue);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.iconWrapper {
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+.titleWrapper{
+  flex-grow: 1;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--neutral-dark);
+  margin: 0 0 4px 0;
+}
+
+.dateRange {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  color: var(--neutral-medium);
+}
+
+.toggleIcon {
+  font-size: 1.25rem;
+  color: var(--neutral-medium);
+  margin-left: 1rem;
+}
+
+.content {
+  padding: 0 1rem 1rem 1rem;
+  border-top: 1px solid var(--neutral-light);
+  margin-top: 0.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .title {
+    font-size: 1rem;
+  }
+}

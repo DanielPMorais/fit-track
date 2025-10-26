@@ -1,0 +1,77 @@
+.itemWrapper {
+  background-color: var(--primary-white);
+  border: 1px solid var(--neutral-light);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.info {
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--neutral-dark);
+  margin: 0 0 4px 0;
+}
+
+.description {
+  font-weight: 400;
+  color: var(--neutral-medium);
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background-color: var(--neutral-background);
+  border: 1px solid var(--neutral-light);
+  border-radius: 20px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--neutral-dark);
+  cursor: pointer;
+}
+
+.actionButton:hover {
+  font-size: 0.9rem;
+}
+
+.mainButton {
+  display: block;
+  margin: auto;
+  width: 99%;
+  padding: 0.3rem;
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.mainButton:hover {
+  background-color: var(--secondary-blue);
+  /* Tom mais escuro do azul primário */
+}
+
+@media only screen and (max-width: 600px) {
+  .mainButton {
+    width: 95%;
+  }
+}
