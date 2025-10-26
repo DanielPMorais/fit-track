@@ -39,7 +39,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: var(--primary-blue);
+  background-color: var(--primary-white);
   border-top: 1px solid var(--neutral-light);
   position: fixed;
   bottom: 0;
@@ -49,7 +49,7 @@
   z-index: 1000;
 }
 
-navButton {
+.navButton {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,9 +60,19 @@ navButton {
   color: var(--neutral-medium);
   font-size: 0.75rem;
   text-decoration: none;
-  gap: 4px;
+  gap: 2px;
+  min-width: 60px;
 }
 
 .navButton:hover {
   color: var(--primary-blue);
+}
+
+.navIcon {
+  font-size: 1.5rem; /* Ajuste o tamanho do ícone */
+}
+
+.navButton.active {
+  color: var(--primary-blue);
+  font-weight: 600;
 }
