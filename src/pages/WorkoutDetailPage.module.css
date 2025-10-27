@@ -1,0 +1,73 @@
+.pageHeader {
+  background-color: var(--primary-blue);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  box-sizing: border-box;
+  padding: 1.5rem;
+}
+
+.pageTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-white);
+  margin: 0;
+}
+
+.downloadButton {
+  background-color: transparent;
+  color: var(--neutral-light);
+  border: 1px solid var(--neutral-medium);
+  border-radius: 4px;
+  padding: 0.4rem;
+  font-size: 0.70rem;
+  font-weight: 500;
+  cursor: pointer;
+  float: right;
+}
+
+/* Barra do "INICIAR" */
+.startBar {
+  background-color: var(--primary-blue-light);
+  color: var(--primary-white);
+  padding: 0.85rem 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  box-sizing: border-box;
+}
+
+.startBar p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.startButton {
+  margin-bottom: 0.75rem;
+  background-color: #28a745;
+  /* Verde */
+  color: var(--primary-white);
+  border: none;
+  border-radius: 5px;
+  /* Pílula */
+  width: 30%;
+  padding: 0.30rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+/* Lista de Exercícios */
+.exerciseList {
+  padding-bottom: 4rem;
+  /* Espaço para o botão 'Finalizar' não cobrir */
+}
+
+@media only screen and (max-width: 600px) {
+  .startButton {
+    width: 100%;
+  }
+}

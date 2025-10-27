@@ -1,0 +1,63 @@
+.card {
+  display: flex;
+  background-color: var(--primary-white);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  margin-bottom: 1rem;
+  overflow: hidden; /* Garante que o radius funcione */
+}
+
+/* Coluna do Checkbox */
+.checkboxWrapper {
+  display: flex;
+  align-items: flex-start; /* Alinha no topo */
+  padding: 1.2rem 0.5rem 1rem 1.2rem;
+}
+.checkbox {
+  width: 24px;
+  height: 24px;
+}
+
+/* Coluna de Informações */
+.infoWrapper {
+  flex-grow: 1; /* Ocupa o espaço disponível */
+  padding: 1rem;
+}
+.title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--neutral-dark);
+  margin: 0 0 0.75rem 0;
+}
+.detail {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--neutral-medium);
+  margin-bottom: 0.25rem;
+}
+.detail strong {
+  color: var(--neutral-dark);
+}
+
+/* Coluna do Vídeo */
+.videoWrapper {
+  position: relative; /* Para o ícone play */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px; /* Largura fixa */
+}
+.thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garante que a imagem cubra o espaço */
+}
+.playIcon {
+  position: absolute;
+  font-size: 2.5rem;
+  color: var(--primary-white);
+  opacity: 0.8;
+  pointer-events: none; /* Não deixa o ícone ser clicável */
+}
