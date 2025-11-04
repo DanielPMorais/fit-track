@@ -94,6 +94,27 @@ export const isAuthenticated = () => {
   return !!getToken();
 };
 
+export const updateProfile = async (name, email) => {
+  const data = await fetchWithAuth('/auth/profile', {
+    method: 'PATCH',
+    body: JSON.stringify({ name, email }),
+  });
+
+  // Atualizar dados do usuário no localStorage
+  if (data.user) {
+    localStorage.setItem('user', JSON.stringify(data.user));
+  }
+
+  return data;
+};
+
+export const updatePassword = async (currentPassword, newPassword) => {
+  return await fetchWithAuth('/auth/password', {
+    method: 'PATCH',
+    body: JSON.stringify({ currentPassword, newPassword }),
+  });
+};
+
 // ========== ROTINAS ==========
 
 export const fetchRoutines = async () => {

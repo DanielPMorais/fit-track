@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoPersonCircleOutline, IoMailOutline, IoKeyOutline, IoLanguageOutline, IoLogOutOutline, IoChevronForward } from 'react-icons/io5';
-import { getCurrentUser, logout } from '../services/api';
+import { getCurrentUser, logout, updateProfile, updatePassword } from '../services/api';
 import { ConfirmModal } from '../components/ConfirmModal';
 import { UpdateProfileModal } from '../components/UpdateProfileModal';
 import { UpdatePasswordModal } from '../components/UpdatePasswordModal';
@@ -37,20 +37,21 @@ export function ProfilePage() {
   };
 
   const handleUpdateProfile = async (data) => {
-    // TODO: Implementar chamada à API para atualizar perfil
-    console.log('Atualizando perfil:', data);
-    // Exemplo: await updateUserProfile(data);
-    // Atualizar localStorage com novos dados
-    const updatedUser = { ...user, ...data };
-    localStorage.setItem('user', JSON.stringify(updatedUser));
-    // Recarregar página para atualizar dados
-    window.location.reload();
+    try {
+      await updateProfile(data.name, data.email);
+      // Recarregar página para atualizar dados na interface
+      window.location.reload();
+    } catch (error) {
+      throw error; // Re-throw para o modal tratar
+    }
   };
 
   const handleUpdatePassword = async (data) => {
-    // TODO: Implementar chamada à API para atualizar senha
-    console.log('Atualizando senha:', data);
-    // Exemplo: await updatePassword(data);
+    try {
+      await updatePassword(data.currentPassword, data.newPassword);
+    } catch (error) {
+      throw error; // Re-throw para o modal tratar
+    }
   };
 
   return (

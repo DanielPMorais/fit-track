@@ -10,6 +10,7 @@ export function UpdatePasswordModal({ isOpen, onClose, onSave }) {
     confirmPassword: '',
   });
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   // Validações de senha em tempo real
@@ -78,15 +79,23 @@ export function UpdatePasswordModal({ isOpen, onClose, onSave }) {
         currentPassword: formData.currentPassword,
         newPassword: formData.newPassword,
       });
+      // Mostrar mensagem de sucesso
+      setSuccess(true);
+      setError('');
       // Limpar formulário
       setFormData({
         currentPassword: '',
         newPassword: '',
         confirmPassword: '',
       });
-      onClose();
+      // Fechar modal após sucesso
+      setTimeout(() => {
+        setSuccess(false);
+        onClose();
+      }, 1500);
     } catch (err) {
       setError(err.message || 'Erro ao atualizar senha');
+      setSuccess(false);
     } finally {
       setIsLoading(false);
     }
@@ -101,12 +110,18 @@ export function UpdatePasswordModal({ isOpen, onClose, onSave }) {
         confirmPassword: '',
       });
       setError('');
+      setSuccess(false);
     }
   }, [isOpen]);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Atualizar Senha">
       <form onSubmit={handleSubmit} className={styles.form}>
+        {success && (
+          <div className={styles.successMessage}>
+            Senha atualizada com sucesso!
+          </div>
+        )}
         {error && <div className={styles.errorMessage}>{error}</div>}
 
         <div className={styles.inputGroup}>
