@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Ícone de halter (dumbbell) - FitTrack -->
+  <g fill="#003B73">
+    <!-- Barra horizontal central -->
+    <rect x="180" y="220" width="152" height="72" rx="8"/>
+    <!-- Peso esquerdo -->
+    <rect x="60" y="140" width="140" height="232" rx="16"/>
+    <!-- Peso direito -->
+    <rect x="312" y="140" width="140" height="232" rx="16"/>
+  </g>
+</svg>

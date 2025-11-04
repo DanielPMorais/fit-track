@@ -11,6 +11,7 @@ import {
   FaChartLine,
   FaDollarSign,
   FaArchive,
+  FaPlus,
 } from "react-icons/fa";
 
 export function HomePage() {
@@ -23,12 +24,12 @@ export function HomePage() {
       <div className={styles.navGrid}>
         {/* Nossos botões reutilizáveis! */}
 
-        <NavButton to="/treinos" label="Treinos">
-          <FaDumbbell />
+        <NavButton to="/adicionar-treino" label="Adicionar Treino">
+          <FaPlus />
         </NavButton>
 
-        <NavButton to="/treinos-extra" label="Treinos Extra">
-          <FaFileAlt />
+        <NavButton to="/treinos" label="Treinos">
+          <FaDumbbell />
         </NavButton>
 
         <NavButton to="/avaliacoes" label="Avaliações">
