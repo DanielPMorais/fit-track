@@ -18,10 +18,10 @@
 .downloadButton {
   background-color: transparent;
   color: var(--neutral-light);
-  border: 1px solid var(--neutral-medium);
+  border: 1px solid var(--neutral-light);
   border-radius: 4px;
-  padding: 0.4rem;
-  font-size: 0.70rem;
+  padding: 0.5rem;
+  font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
   float: right;
@@ -47,7 +47,7 @@
 
 .startButton {
   margin-bottom: 0.75rem;
-  background-color: #28a745;
+  background-color: var(--primary-green);
   /* Verde */
   color: var(--primary-white);
   border: none;
@@ -69,5 +69,10 @@
 @media only screen and (max-width: 600px) {
   .startButton {
     width: 100%;
+  }
+
+  .downloadButton {
+    font-size: 0.70rem;
+    font-weight: 300;
   }
 }

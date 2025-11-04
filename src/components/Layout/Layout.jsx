@@ -3,6 +3,7 @@ import { Outlet, Link, NavLink, useNavigate } from "react-router-dom";
 import styles from "./Layout.module.css";
 
 import { IoChevronBack, IoHomeOutline, IoPersonOutline } from "react-icons/io5";
+import { FaDumbbell } from 'react-icons/fa';
 
 export function Layout() {
   const navigate = useNavigate();
@@ -14,7 +15,12 @@ export function Layout() {
   return (
     <div className={styles.appContainer}>
       <header className={styles.header}>
-        {/* <img src="logo-placeholder.svg" alt="FitTrack Logo" className={styles.logo} /> */}
+        <div className={styles.logoContainer}>
+          <div className={styles.logoIcon}>
+            <FaDumbbell />
+          </div>
+          <label className={styles.logo}>FitTrack</label>
+        </div>
       </header>
 
       <main className={styles.mainContent}>
