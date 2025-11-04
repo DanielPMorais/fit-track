@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoPersonCircleOutline, IoMailOutline, IoKeyOutline, IoLanguageOutline, IoLogOutOutline, IoChevronForward } from 'react-icons/io5';
 import { getCurrentUser, logout } from '../services/api';
+import { ConfirmModal } from '../components/ConfirmModal';
 import styles from './ProfilePage.module.css';
 
 export function ProfilePage() {
   const navigate = useNavigate();
   const user = getCurrentUser();
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
-  const handleLogout = () => {
+  const handleLogoutClick = () => {
+    setShowLogoutModal(true);
+  };
+
+  const handleLogoutConfirm = () => {
     logout();
+    setShowLogoutModal(false);
     navigate('/login');
+  };
+
+  const handleLogoutCancel = () => {
+    setShowLogoutModal(false);
   };
 
   const handleOptionClick = (option) => {
@@ -84,7 +95,7 @@ export function ProfilePage() {
       {/* Logout */}
       <button
         className={`${styles.optionCard} ${styles.logoutButton}`}
-        onClick={handleLogout}
+        onClick={handleLogoutClick}
       >
         <div className={styles.optionContent}>
           <div className={styles.iconWrapper}>
@@ -101,6 +112,18 @@ export function ProfilePage() {
           <p className={styles.userEmail}>{user.email}</p>
         </div>
       )}
+
+      {/* Modal de confirmação de logout */}
+      <ConfirmModal
+        isOpen={showLogoutModal}
+        onClose={handleLogoutCancel}
+        onConfirm={handleLogoutConfirm}
+        title="Confirmar saída"
+        message="Tem certeza que deseja sair da sua conta?"
+        confirmText="Sair"
+        cancelText="Cancelar"
+        confirmButtonClass="danger"
+      />
     </div>
   );
 }
