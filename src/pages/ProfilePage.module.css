@@ -1,0 +1,125 @@
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pageTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--neutral-dark);
+  margin: 0;
+}
+
+.optionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.optionCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--primary-white);
+  border-radius: 8px;
+  padding: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  text-align: left;
+}
+
+.optionCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.optionCard:active {
+  transform: translateY(0);
+}
+
+.optionContent {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.optionIcon {
+  font-size: 1.5rem;
+  color: var(--neutral-dark);
+}
+
+.optionText {
+  font-size: 1rem;
+  color: var(--neutral-dark);
+  font-weight: 400;
+}
+
+.chevronIcon {
+  color: var(--neutral-medium);
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.logoutButton {
+  margin-top: 1rem;
+  background-color: var(--feedback-error-background);
+}
+
+.logoutButton .optionIcon,
+.logoutButton .optionText {
+  color: var(--feedback-error-text);
+}
+
+.logoutButton:hover {
+  background-color: var(--feedback-error-text);
+}
+
+.logoutButton:hover .optionIcon,
+.logoutButton:hover .optionText,
+.logoutButton:hover .chevronIcon {
+  color: var(--primary-white);
+}
+
+.userInfo {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--neutral-light);
+  text-align: center;
+}
+
+.userEmail {
+  font-size: 0.9rem;
+  color: var(--neutral-medium);
+  margin: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .optionText {
+    font-size: 0.9rem;
+  }
+
+  .iconWrapper {
+    width: 36px;
+    height: 36px;
+  }
+
+  .optionIcon {
+    font-size: 1.25rem;
+  }
+}
+
