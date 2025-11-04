@@ -99,6 +99,16 @@
   margin: 0;
 }
 
+.inputError {
+  border-color: var(--feedback-error-text) !important;
+}
+
+.fieldError {
+  font-size: 0.8rem;
+  color: var(--feedback-error-text);
+  margin-top: 0.25rem;
+}
+
 .passwordRequirements {
   display: flex;
   flex-direction: column;

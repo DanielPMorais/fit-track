@@ -3,13 +3,33 @@ import { useNavigate } from 'react-router-dom';
 import styles from './LoginPage.module.css';
 import { FaDumbbell } from 'react-icons/fa';
 import { login } from '../services/api';
+import { validateEmail, normalizeEmail } from '../utils/emailValidation';
 
 export function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [emailError, setEmailError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+    setError('');
+    
+    // Validação de email em tempo real
+    if (value.length > 0) {
+      const emailValidation = validateEmail(value);
+      if (!emailValidation.isValid) {
+        setEmailError(emailValidation.error);
+      } else {
+        setEmailError('');
+      }
+    } else {
+      setEmailError('');
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,8 +43,18 @@ export function LoginPage() {
       return;
     }
 
+    // Validação de email
+    const emailValidation = validateEmail(email);
+    if (!emailValidation.isValid) {
+      setError(emailValidation.error);
+      setIsLoading(false);
+      return;
+    }
+
     try {
-      await login(email, password);
+      // Normalizar email antes de enviar
+      const normalizedEmail = normalizeEmail(email);
+      await login(normalizedEmail, password);
       // Redirecionar para home após login bem-sucedido
       navigate('/');
     } catch (err) {
@@ -61,11 +91,14 @@ export function LoginPage() {
               id="email"
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className={styles.input}
+              onChange={handleEmailChange}
+              className={`${styles.input} ${emailError ? styles.inputError : ''}`}
               placeholder="seu@email.com"
               disabled={isLoading}
             />
+            {emailError && (
+              <span className={styles.fieldError}>{emailError}</span>
+            )}
           </div>
 
           <div className={styles.inputGroup}>

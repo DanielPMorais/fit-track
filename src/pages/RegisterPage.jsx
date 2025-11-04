@@ -4,6 +4,7 @@ import styles from "./RegisterPage.module.css";
 import { FaDumbbell } from "react-icons/fa";
 import { IoCheckmarkCircle, IoCheckmarkCircleOutline } from "react-icons/io5";
 import { register } from "../services/api";
+import { validateEmail, normalizeEmail } from "../utils/emailValidation";
 
 export function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -13,6 +14,7 @@ export function RegisterPage() {
     confirmPassword: "",
   });
   const [error, setError] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -40,6 +42,16 @@ export function RegisterPage() {
     }));
     // Limpa erro ao digitar
     if (error) setError("");
+    
+    // Validação de email em tempo real
+    if (name === "email") {
+      const emailValidation = validateEmail(value);
+      if (!emailValidation.isValid && value.length > 0) {
+        setEmailError(emailValidation.error);
+      } else {
+        setEmailError("");
+      }
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -48,6 +60,7 @@ export function RegisterPage() {
     setIsLoading(true);
 
     // Validações
+    // Validações básicas
     if (
       !formData.name ||
       !formData.email ||
@@ -55,6 +68,14 @@ export function RegisterPage() {
       !formData.confirmPassword
     ) {
       setError("Por favor, preencha todos os campos");
+      setIsLoading(false);
+      return;
+    }
+
+    // Validação de email
+    const emailValidation = validateEmail(formData.email);
+    if (!emailValidation.isValid) {
+      setError(emailValidation.error);
       setIsLoading(false);
       return;
     }
@@ -72,7 +93,9 @@ export function RegisterPage() {
     }
 
     try {
-      await register(formData.name, formData.email, formData.password);
+      // Normalizar email antes de enviar
+      const normalizedEmail = normalizeEmail(formData.email);
+      await register(formData.name.trim(), normalizedEmail, formData.password);
       // Redirecionar para home após cadastro bem-sucedido
       navigate("/");
     } catch (err) {
@@ -123,10 +146,13 @@ export function RegisterPage() {
               type="email"
               value={formData.email}
               onChange={handleChange}
-              className={styles.input}
+              className={`${styles.input} ${emailError ? styles.inputError : ''}`}
               placeholder="seu@email.com"
               disabled={isLoading}
             />
+            {emailError && (
+              <span className={styles.fieldError}>{emailError}</span>
+            )}
           </div>
 
           <div className={styles.inputGroup}>

@@ -93,6 +93,16 @@
   color: var(--neutral-medium);
 }
 
+.inputError {
+  border-color: var(--feedback-error-text) !important;
+}
+
+.fieldError {
+  font-size: 0.8rem;
+  color: var(--feedback-error-text);
+  margin-top: 0.25rem;
+}
+
 .submitButton {
   width: 100%;
   padding: 0.875rem;

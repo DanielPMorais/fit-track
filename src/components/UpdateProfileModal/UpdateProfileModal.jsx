@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Modal } from '../Modal';
 import { getCurrentUser } from '../../services/api';
+import { validateEmail, normalizeEmail } from '../../utils/emailValidation';
 import styles from './UpdateProfileModal.module.css';
 
 export function UpdateProfileModal({ isOpen, onClose, onSave }) {
@@ -10,7 +11,9 @@ export function UpdateProfileModal({ isOpen, onClose, onSave }) {
     email: '',
   });
   const [error, setError] = useState('');
+  const [emailError, setEmailError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [originalEmail, setOriginalEmail] = useState('');
 
   useEffect(() => {
     if (isOpen && user) {
@@ -18,7 +21,9 @@ export function UpdateProfileModal({ isOpen, onClose, onSave }) {
         name: user.name || '',
         email: user.email || '',
       });
+      setOriginalEmail(user.email || '');
       setError('');
+      setEmailError('');
     }
   }, [isOpen, user]);
 
@@ -29,6 +34,16 @@ export function UpdateProfileModal({ isOpen, onClose, onSave }) {
       [name]: value,
     }));
     if (error) setError('');
+    
+    // Validação de email em tempo real
+    if (name === 'email') {
+      const emailValidation = validateEmail(value);
+      if (!emailValidation.isValid && value.length > 0) {
+        setEmailError(emailValidation.error);
+      } else {
+        setEmailError('');
+      }
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -43,22 +58,27 @@ export function UpdateProfileModal({ isOpen, onClose, onSave }) {
       return;
     }
 
-    if (!formData.email.trim()) {
-      setError('O e-mail é obrigatório');
+    // Validação de email
+    const emailValidation = validateEmail(formData.email);
+    if (!emailValidation.isValid) {
+      setError(emailValidation.error);
       setIsLoading(false);
       return;
     }
 
-    // Validação básica de email
-    const emailRegex = /^\S+@\S+\.\S+$/;
-    if (!emailRegex.test(formData.email)) {
-      setError('Por favor, insira um e-mail válido');
-      setIsLoading(false);
-      return;
-    }
+    // Verificar se o email foi alterado
+    const normalizedNewEmail = normalizeEmail(formData.email);
+    const normalizedOriginalEmail = normalizeEmail(originalEmail);
+    
+    // Se o email mudou, pode ser necessário verificar se já existe no backend
+    // Por enquanto, apenas normalizamos
+    const dataToSave = {
+      name: formData.name.trim(),
+      email: normalizedNewEmail,
+    };
 
     try {
-      await onSave(formData);
+      await onSave(dataToSave);
       onClose();
     } catch (err) {
       setError(err.message || 'Erro ao atualizar dados');
@@ -98,10 +118,13 @@ export function UpdateProfileModal({ isOpen, onClose, onSave }) {
             type="email"
             value={formData.email}
             onChange={handleChange}
-            className={styles.input}
+            className={`${styles.input} ${emailError ? styles.inputError : ''}`}
             placeholder="seu@email.com"
             disabled={isLoading}
           />
+          {emailError && (
+            <span className={styles.fieldError}>{emailError}</span>
+          )}
         </div>
 
         <div className={styles.formButtons}>

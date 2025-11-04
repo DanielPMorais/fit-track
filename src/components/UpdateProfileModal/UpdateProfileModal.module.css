@@ -44,6 +44,16 @@
   color: var(--neutral-medium);
 }
 
+.inputError {
+  border-color: var(--feedback-error-text) !important;
+}
+
+.fieldError {
+  font-size: 0.8rem;
+  color: var(--feedback-error-text);
+  margin-top: 0.25rem;
+}
+
 .errorMessage {
   padding: 0.75rem;
   background-color: var(--feedback-error-background);
