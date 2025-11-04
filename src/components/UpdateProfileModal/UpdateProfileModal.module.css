@@ -1,0 +1,112 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--neutral-dark);
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid var(--neutral-light);
+  border-radius: 8px;
+  background-color: var(--primary-white);
+  color: var(--neutral-dark);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(0, 59, 115, 0.1);
+}
+
+.input:disabled {
+  background-color: var(--neutral-background);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.input::placeholder {
+  color: var(--neutral-medium);
+}
+
+.errorMessage {
+  padding: 0.75rem;
+  background-color: var(--feedback-error-background);
+  color: var(--feedback-error-text);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.formButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-width: 100px;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.cancelButton {
+  background-color: var(--neutral-light);
+  color: var(--neutral-dark);
+}
+
+.cancelButton:hover:not(:disabled) {
+  background-color: var(--neutral-medium);
+  color: var(--primary-white);
+}
+
+.saveButton {
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+}
+
+.saveButton:hover:not(:disabled) {
+  background-color: var(--primary-blue-light);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (max-width: 600px) {
+  .formButtons {
+    flex-direction: column-reverse;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+

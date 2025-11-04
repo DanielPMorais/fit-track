@@ -3,12 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import { IoPersonCircleOutline, IoMailOutline, IoKeyOutline, IoLanguageOutline, IoLogOutOutline, IoChevronForward } from 'react-icons/io5';
 import { getCurrentUser, logout } from '../services/api';
 import { ConfirmModal } from '../components/ConfirmModal';
+import { UpdateProfileModal } from '../components/UpdateProfileModal';
+import { UpdatePasswordModal } from '../components/UpdatePasswordModal';
 import styles from './ProfilePage.module.css';
 
 export function ProfilePage() {
   const navigate = useNavigate();
   const user = getCurrentUser();
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [showUpdateProfileModal, setShowUpdateProfileModal] = useState(false);
+  const [showUpdatePasswordModal, setShowUpdatePasswordModal] = useState(false);
 
   const handleLogoutClick = () => {
     setShowLogoutModal(true);
@@ -24,10 +28,29 @@ export function ProfilePage() {
     setShowLogoutModal(false);
   };
 
-  const handleOptionClick = (option) => {
-    // Por enquanto apenas console.log - pode implementar as telas depois
-    console.log(`Opção selecionada: ${option}`);
-    // Exemplo: navigate(`/perfil/${option}`);
+  const handleUpdateProfileClick = () => {
+    setShowUpdateProfileModal(true);
+  };
+
+  const handleUpdatePasswordClick = () => {
+    setShowUpdatePasswordModal(true);
+  };
+
+  const handleUpdateProfile = async (data) => {
+    // TODO: Implementar chamada à API para atualizar perfil
+    console.log('Atualizando perfil:', data);
+    // Exemplo: await updateUserProfile(data);
+    // Atualizar localStorage com novos dados
+    const updatedUser = { ...user, ...data };
+    localStorage.setItem('user', JSON.stringify(updatedUser));
+    // Recarregar página para atualizar dados
+    window.location.reload();
+  };
+
+  const handleUpdatePassword = async (data) => {
+    // TODO: Implementar chamada à API para atualizar senha
+    console.log('Atualizando senha:', data);
+    // Exemplo: await updatePassword(data);
   };
 
   return (
@@ -38,7 +61,7 @@ export function ProfilePage() {
         {/* Alterar foto */}
         <button
           className={styles.optionCard}
-          onClick={() => handleOptionClick('alterar-foto')}
+          onClick={() => console.log('Alterar foto - em desenvolvimento')}
         >
           <div className={styles.optionContent}>
             <div className={styles.iconWrapper}>
@@ -52,13 +75,13 @@ export function ProfilePage() {
         {/* Nome ou Email */}
         <button
           className={styles.optionCard}
-          onClick={() => handleOptionClick('editar-dados')}
+          onClick={handleUpdateProfileClick}
         >
           <div className={styles.optionContent}>
             <div className={styles.iconWrapper}>
               <IoMailOutline className={styles.optionIcon} />
             </div>
-            <span className={styles.optionText}>Nome ou Email</span>
+            <span className={styles.optionText}>Alterar Nome ou Email</span>
           </div>
           <IoChevronForward className={styles.chevronIcon} />
         </button>
@@ -66,7 +89,7 @@ export function ProfilePage() {
         {/* Atualizar senha */}
         <button
           className={styles.optionCard}
-          onClick={() => handleOptionClick('atualizar-senha')}
+          onClick={handleUpdatePasswordClick}
         >
           <div className={styles.optionContent}>
             <div className={styles.iconWrapper}>
@@ -80,7 +103,7 @@ export function ProfilePage() {
         {/* Alterar idioma */}
         <button
           className={styles.optionCard}
-          onClick={() => handleOptionClick('alterar-idioma')}
+          onClick={() => console.log('Alterar idioma - em desenvolvimento')}
         >
           <div className={styles.optionContent}>
             <div className={styles.iconWrapper}>
@@ -123,6 +146,20 @@ export function ProfilePage() {
         confirmText="Sair"
         cancelText="Cancelar"
         confirmButtonClass="danger"
+      />
+
+      {/* Modal de atualizar perfil */}
+      <UpdateProfileModal
+        isOpen={showUpdateProfileModal}
+        onClose={() => setShowUpdateProfileModal(false)}
+        onSave={handleUpdateProfile}
+      />
+
+      {/* Modal de atualizar senha */}
+      <UpdatePasswordModal
+        isOpen={showUpdatePasswordModal}
+        onClose={() => setShowUpdatePasswordModal(false)}
+        onSave={handleUpdatePassword}
       />
     </div>
   );
