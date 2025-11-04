@@ -1,11 +1,12 @@
 import { Routes, Route } from 'react-router-dom'
 import { Layout } from './components/Layout'
-import { HomePage, WorkoutListPage, WorkoutDetailPage, ProfilePage, LoginPage } from './pages'
+import { HomePage, WorkoutListPage, WorkoutDetailPage, ProfilePage, LoginPage, RegisterPage } from './pages'
 
 function App() {
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/cadastro" element={<RegisterPage />} />
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="treinos" element={<WorkoutListPage />} />

@@ -1,4 +1,4 @@
-.loginContainer {
+.registerContainer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,7 +7,7 @@
   padding: 1rem;
 }
 
-.loginCard {
+.registerCard {
   background-color: var(--primary-white);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -93,6 +93,50 @@
   color: var(--neutral-medium);
 }
 
+.helperText {
+  font-size: 0.8rem;
+  color: var(--neutral-medium);
+  margin: 0;
+}
+
+.passwordRequirements {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background-color: var(--neutral-background);
+  border-radius: 8px;
+}
+
+.requirement {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.checkIcon {
+  color: var(--primary-green);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.checkIconOutline {
+  color: var(--neutral-medium);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.requirementText {
+  color: var(--neutral-medium);
+}
+
+.requirementMet {
+  color: var(--primary-green);
+  font-weight: 500;
+}
+
 .submitButton {
   width: 100%;
   padding: 0.875rem;
@@ -109,7 +153,7 @@
 }
 
 .submitButton:hover:not(:disabled) {
-  background-color: var(--secondary-blue);
+  background-color: var(--primary-blue-light);
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
@@ -123,37 +167,6 @@
   cursor: not-allowed;
   opacity: 0.7;
 }
-
-.registerButton {
-  width: 100%;
-  padding: 0.875rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--primary-white);
-  background-color: var(--primary-blue-light);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.registerButton:hover:not(:disabled) {
-  background-color: var(--primary-blue);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.registerButton:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-.registerButton:disabled {
-  background-color: var(--neutral-medium);
-  cursor: not-allowed;
-  opacity: 0.7;
-}
-
 
 .errorMessage {
   padding: 0.75rem;
@@ -170,11 +183,17 @@
   margin-top: 0.5rem;
 }
 
+.footerText {
+  font-size: 0.9rem;
+  color: var(--neutral-medium);
+  margin: 0;
+}
+
 .link {
   color: var(--primary-blue);
   text-decoration: none;
-  font-size: 0.9rem;
   transition: color 0.3s ease;
+  font-weight: 500;
 }
 
 .link:hover {
@@ -183,7 +202,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .loginCard {
+  .registerCard {
     padding: 1.5rem;
   }
 
@@ -196,6 +215,9 @@
     height: 56px;
     font-size: 1.75rem;
   }
-}
 
+  .form {
+    gap: 1.25rem;
+  }
+}
 

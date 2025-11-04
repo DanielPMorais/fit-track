@@ -89,6 +89,15 @@ export function LoginPage() {
             {isLoading ? 'Entrando...' : 'Entrar'}
           </button>
 
+          <button
+            type="button"
+            className={styles.registerButton}
+            onClick={() => navigate('/cadastro')}
+          >
+            Criar conta
+          </button>
+
+
           <div className={styles.footerLinks}>
             <a href="#esqueci-senha" className={styles.link}>
               Esqueci minha senha
