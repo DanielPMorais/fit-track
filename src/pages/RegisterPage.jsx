@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import styles from "./RegisterPage.module.css";
 import { FaDumbbell } from "react-icons/fa";
 import { IoCheckmarkCircle, IoCheckmarkCircleOutline } from "react-icons/io5";
+import { register } from "../services/api";
 
 export function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -70,13 +71,14 @@ export function RegisterPage() {
       return;
     }
 
-    // TODO: Implementar cadastro com backend
-    // Simulação de cadastro (substituir por chamada à API)
-    setTimeout(() => {
+    try {
+      await register(formData.name, formData.email, formData.password);
+      // Redirecionar para home após cadastro bem-sucedido
+      navigate("/");
+    } catch (err) {
+      setError(err.message || "Erro ao criar conta. Tente novamente.");
       setIsLoading(false);
-      // Redirecionar para login após cadastro bem-sucedido
-      navigate("/login");
-    }, 1000);
+    }
   };
 
   return (

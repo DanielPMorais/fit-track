@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './LoginPage.module.css';
 import { FaDumbbell } from 'react-icons/fa';
+import { login } from '../services/api';
 
 export function LoginPage() {
   const [email, setEmail] = useState('');
@@ -15,20 +16,21 @@ export function LoginPage() {
     setError('');
     setIsLoading(true);
 
-    // TODO: Implementar autenticação com backend
-    // Por enquanto, validação básica
+    // Validação básica
     if (!email || !password) {
       setError('Por favor, preencha todos os campos');
       setIsLoading(false);
       return;
     }
 
-    // Simulação de login (substituir por chamada à API)
-    setTimeout(() => {
-      setIsLoading(false);
+    try {
+      await login(email, password);
       // Redirecionar para home após login bem-sucedido
       navigate('/');
-    }, 1000);
+    } catch (err) {
+      setError(err.message || 'Erro ao fazer login. Verifique suas credenciais.');
+      setIsLoading(false);
+    }
   };
 
   return (
