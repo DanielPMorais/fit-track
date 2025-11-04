@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { ProtectedRoute } from './components/ProtectedRoute'
 import { PublicRoute } from './components/PublicRoute'
-import { HomePage, WorkoutListPage, WorkoutDetailPage, ProfilePage, LoginPage, RegisterPage } from './pages'
+import { HomePage, WorkoutListPage, WorkoutDetailPage, ProfilePage, LoginPage, RegisterPage, NotFoundPage } from './pages'
 
 function App() {
   return (
@@ -38,7 +38,12 @@ function App() {
         <Route path="treinos" element={<WorkoutListPage />} />
         <Route path="treino/:workoutId" element={<WorkoutDetailPage />} />
         <Route path="perfil" element={<ProfilePage />} />
+        {/* Rota 404 para rotas protegidas não encontradas */}
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
+      
+      {/* Rota 404 para rotas públicas não encontradas */}
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )
 }

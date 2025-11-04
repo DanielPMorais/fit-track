@@ -4,3 +4,4 @@ export * from './WorkoutDetailPage';
 export * from './ProfilePage';
 export * from './LoginPage';
 export * from './RegisterPage';
+export * from './NotFoundPage';
